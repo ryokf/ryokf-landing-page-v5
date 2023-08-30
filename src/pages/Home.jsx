@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import bg from "../assets/home-bg.png";
+import bg from "../assets/home-bg.webp";
 import MainCircle from "../components/MainCircle";
 import PhotoMyself from "../assets/myself.png";
 
