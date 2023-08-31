@@ -5,16 +5,15 @@ import PhotoMyself from "../assets/myself.png";
 
 import Menu from "../components/Menu";
 import PageIndicators from "./../components/PageIndicators";
+import MedsosGroup from './../components/MedsosGroup';
 
 import { useState } from "react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const Title = ({ isStart }) => {
 
   const subtitle = (
-    <p className="text-3xl text-zinc-200 transition-all duration-1000">
-      {"<Web and Mobile Developer/>"}
+    <p className={`text-3xl text-zinc-200 transition-all duration-1000 ${isStart ? 'opacity-0' : 'opacity-100'}`}>
+      {"<Web and Mobile Developer>"}
     </p>
   );
 
@@ -24,7 +23,7 @@ const Title = ({ isStart }) => {
       <h1 className=" text-[116px] font-bold text-white">
         RYO KHRISNA FITRIAWAN
       </h1>
-      {isStart ? <></> : subtitle }
+      { subtitle }
     </div>
   );
 };
@@ -41,6 +40,9 @@ const Home = () => {
       {isStart ? <Menu addClass={'opacity-100'} /> : <Menu addClass={'opacity-0'} />}
 
       {isStart ?  <PageIndicators addClass={'opacity-100'} /> : <PageIndicators addClass={'opacity-0'} />}
+
+      {isStart ?  <MedsosGroup addClass={'opacity-100'} /> : <MedsosGroup addClass={'opacity-0'} />}
+      {/* {isStart ?  <MedsosGroup addClass={'bottom-6'} /> : <MedsosGroup addClass={'-bottom-10'} />} */}
 
       <MainCircle
         onClick={() => {
