@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
     <div
-    className="fixed h-screen w-full bg-cover flex justify-center items-center overflow-hidden"
+    className="fixed h-screen w-full bg-cover flex justify-center items-center overflow-hidden transition-all"
     style={{ backgroundImage: `url(${bg})` }}
     >
       
@@ -42,7 +42,6 @@ const Home = () => {
       {isStart ?  <PageIndicators addClass={'opacity-100'} /> : <PageIndicators addClass={'opacity-0'} />}
 
       {isStart ?  <MedsosGroup addClass={'opacity-100'} /> : <MedsosGroup addClass={'opacity-0'} />}
-      {/* {isStart ?  <MedsosGroup addClass={'bottom-6'} /> : <MedsosGroup addClass={'-bottom-10'} />} */}
 
       <MainCircle
         onClick={() => {

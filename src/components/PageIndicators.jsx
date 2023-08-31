@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import page from "../route";
 
@@ -13,7 +14,7 @@ const PageIndicators = ({addClass}) => {
         <button key={page} onClick={() => navigate("/" + page)}>
           <div
             className={`${
-              window.location.pathname == page ? "bg-cyan-300 w-4" : "bg-white w-2"
+              window.location.pathname == "/" +page ? "bg-cyan-300 w-4" : "bg-white w-2"
             } aspect-square  rounded-full`}
           ></div>
         </button>
