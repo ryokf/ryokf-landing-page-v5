@@ -13,8 +13,8 @@ import { useState } from "react";
 const Title = ({ isStart }) => {
 
   const subtitle = (
-    <p className="text-3xl font-medium text-zinc-300">
-      Web and Mobile Developer
+    <p className="text-3xl text-zinc-200 transition-all duration-1000">
+      {"<Web and Mobile Developer/>"}
     </p>
   );
 
@@ -34,13 +34,13 @@ const Home = () => {
 
   return (
     <div
-    className="h-screen w-full bg-cover flex justify-center items-center overflow-y-hidden"
+    className="fixed h-screen w-full bg-cover flex justify-center items-center overflow-hidden"
     style={{ backgroundImage: `url(${bg})` }}
     >
       
-      {isStart ? <Menu /> : <></>}
+      {isStart ? <Menu addClass={'opacity-100'} /> : <Menu addClass={'opacity-0'} />}
 
-      {isStart ?  <PageIndicators /> : <></>}
+      {isStart ?  <PageIndicators addClass={'opacity-100'} /> : <PageIndicators addClass={'opacity-0'} />}
 
       <MainCircle
         onClick={() => {
@@ -53,9 +53,9 @@ const Home = () => {
       <div
         className={`${
           isStart ? "bottom-0" : "-bottom-[800px]"
-        } transition duration-[10000000000ms] absolute`}
+        } transition-all duration-[1000ms] absolute`}
       >
-        <img src={PhotoMyself} alt="" width={800} />
+        <img src={PhotoMyself} alt="" width={800}  />
       </div>
     </div>
   );

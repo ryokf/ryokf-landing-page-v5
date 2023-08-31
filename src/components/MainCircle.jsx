@@ -11,7 +11,7 @@ const MainCircle = ({child, isStart, onClick}) => {
     return(
         <button 
                 onClick={onClick}
-                className={`${isStart ? 'bg-cyan-400' : 'bg-zinc-600'} flex justify-center items-center transition rounded-full aspect-square w-1/3`}
+                className={`${isStart ? 'bg-cyan-400' : 'bg-zinc-600'} flex justify-center items-center transition-all duration-1000 rounded-full aspect-square w-1/3`}
                 style={isStart ? style.lampEffect : style.LampOff}
         >
         {child}            

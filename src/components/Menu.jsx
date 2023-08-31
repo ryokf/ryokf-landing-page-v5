@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import page from "../route";
 
-const Menu = () => {
+const Menu = ({addClass}) => {
   const pages = page();
   const navigate = useNavigate();
 
   return (
-    <div className="-rotate-90 text-xl  absolute -left-40">
+    <div className={`-rotate-90 text-xl  absolute -left-40 transition-all duration-1000 ${addClass}`}>
       <ul className="flex">
         {pages[0].map((page) => (
           <button key={page} onClick={() => navigate("/" + page)}>
