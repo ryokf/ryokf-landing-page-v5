@@ -42,16 +42,31 @@ const About = () => {
     let height = ScreenInfo()[1]
 
     const style = {
-        skillCircleBg: {
-            backgroundImage: `url(${skillCircle})`
+        lampEffect: {
+            boxShadow: '0px 0px 100px 52px #22d3ee2b, inset 0px 0px 100px 52px #ffffff77',
+            bottom : width / -6
+        },
+        LampOff: {
+            boxShadow: '0px 0px 50px 10px #ffffff33, inset 0px 0px 50px 5px #ffffff77',
+            bottom : width / -6
+        },
+        circleListPosition: {
+            bottom: isStart ? (width) / -3.6 : width / -2.5
+        },
+        circleButtonPosition: {
+            bottom: width / 2
+        }, mySkillText: {
+            fontSize: width / 40,
+            top: width / 12
         }
     }
 
-    const AboutBox = ({addClass}) => {
+    const AboutBox = ({ addClass }) => {
         const style = {
             solidShadow: {
                 boxShadow: '5px 5px 0px 1px #67e8f9'
-            }
+            },
+
         }
 
         return (
@@ -77,16 +92,20 @@ const About = () => {
 
                 {<MedsosGroup addClass={""} />}
 
-                {<MainCircle position={'absolute -bottom-1/3 z-10'} onClick={() => {
-                    setIsStart((prev) => !prev);
-                }}
+
+
+                {<MainCircle
+                    style={style}
+                    position={'absolute z-10'} onClick={() => {
+                        setIsStart((prev) => !prev);
+                    }}
                     isStart={isStart}
-                    child={(<h1 className={` ${isStart ? 'opacity-0' : 'opacity-100'} transition-all duration-500 absolute top-[180px] text-5xl font-medium text-zinc-500`}>My Skill</h1>)}
+                    child={(<h1 style={style.mySkillText} className={` ${isStart ? 'opacity-0' : 'opacity-100'} transition-all duration-500 absolute font-medium text-zinc-500`}>My Skill</h1>)}
                 />}
 
                 {/* <SkillList isStart={isStart}/> */}
-                <div className={` ${isStart ? 'rotate-0 -bottom-1/2' : 'rotate-180 -bottom-2/3'} m-12  bg-no-repeat bg-center transition-all duration-1000 absolute `}>
-                    <img src={skillCircle} alt="" width={1020} />
+                <div style={style.circleListPosition} className={` ${isStart ? 'rotate-0' : 'rotate-180 '} m-12  bg-no-repeat bg-center transition-all duration-1000 absolute `}>
+                    <img src={skillCircle} alt="" width={width / 1.8} />
                 </div>
             </div>
         );
@@ -96,17 +115,19 @@ const About = () => {
                 className="fixed h-screen w-full bg-cover flex justify-center items-center overflow-hidden transition-all"
                 style={{ backgroundImage: `url(${bgPotrait})` }}
             >
-            {<AboutBox addClass={'w-10/12'}/>}
+                {<AboutBox addClass={'w-10/12'} />}
 
-            <div className="absolute bottom-1/4 md:bottom-1/3 w-full min-h-max flex justify-center items-center bg-red-100">
-            {<MainCircle position={'absolute z-10'} onClick={() => {
-                setIsStart((prev) => !prev);
-                }}
-                isStart={isStart}
-                    child={(<h1 className={` ${isStart ? 'opacity-0' : 'opacity-100'} transition-all duration-700 text-xl font-medium text-zinc-500`}>My Skill</h1>)}
+                <div className="absolute bottom-1/4 md:bottom-1/3 w-full min-h-max flex justify-center items-center bg-red-100">
+                    {<MainCircle 
+                        style={style}
+                    position={'absolute z-10'} onClick={() => {
+                        setIsStart((prev) => !prev);
+                    }}
+                        isStart={isStart}
+                        child={(<h1 className={` ${isStart ? 'opacity-0' : 'opacity-100'} transition-all duration-700 text-xl font-medium text-zinc-500`}>My Skill</h1>)}
                     />}
-            <img src={skillCirclePotrait} width={width / 1.5} className={`${isStart ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'} absolute  transition-all duration-700 `}alt="" />
-            </div>
+                    <img src={skillCirclePotrait} width={width / 1.5} className={`${isStart ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'} absolute  transition-all duration-700 `} alt="" />
+                </div>
             </div>
 
         )
