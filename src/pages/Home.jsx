@@ -79,6 +79,17 @@ const Home = () => {
   let width = ScreenInfo()[0]
   let height = ScreenInfo()[1]
 
+  const style = {
+    lampEffect: {
+      boxShadow: '0px 0px 100px 52px #22d3ee2b, inset 0px 0px 100px 52px #ffffff77',
+      bottom : width / -6
+  },
+  LampOff: {
+      boxShadow: '0px 0px 50px 10px #ffffff33, inset 0px 0px 50px 5px #ffffff77',
+      bottom : width / -6
+  },
+  }
+
   if (width > height) {
     return (
       <div
@@ -93,6 +104,7 @@ const Home = () => {
         {isStart ? <MedsosGroup addClass={'opacity-100'} /> : <MedsosGroup addClass={'opacity-0'} />}
 
         <MainCircle
+        style={style}
           onClick={() => {
             setIsStart((prev) => !prev);
           }}
