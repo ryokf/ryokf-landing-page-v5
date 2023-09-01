@@ -8,19 +8,53 @@ import PageIndicators from "./../components/PageIndicators";
 import MedsosGroup from './../components/MedsosGroup';
 
 import { useState } from "react";
+import { useEffect } from "react";
+
+const WidthInfo = () => {
+  function getWindowSize() {
+      const { innerWidth, innerHeight } = window;
+      return { innerWidth, innerHeight };
+  }
+
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+      function handleWindowResize() {
+          setWindowSize(getWindowSize());
+      }
+
+      window.addEventListener("resize", handleWindowResize);
+
+      return () => {
+          window.removeEventListener("resize", handleWindowResize);
+      };
+  }, []);
+
+  console.log(windowSize.innerWidth);
+
+  return windowSize.innerWidth
+};
 
 const Title = ({ isStart }) => {
 
+  const style = {
+    tile : {
+      fontSize : WidthInfo() / 20
+    },
+    subtitle : {
+      fontSize : WidthInfo() / 60
+    }
+  }
+
   const subtitle = (
-    <p className={`text-3xl text-zinc-200 transition-all duration-1000 ${isStart ? 'opacity-0' : 'opacity-100'}`}>
+    <p style={style.subtitle} className={`text-3xl text-zinc-200 transition-all duration-1000 ${isStart ? 'opacity-0' : 'opacity-100'}`}>
       {"<Web and Mobile Developer>"}
     </p>
   );
 
-  
   return (
       <div className="absolute flex flex-col justify-center items-center">
-      <h1 className=" text-[116px] font-bold text-white">
+      <h1 style={style.tile} className="font-bold text-white">
         RYO KHRISNA FITRIAWAN
       </h1>
       { subtitle }
@@ -56,7 +90,7 @@ const Home = () => {
           isStart ? "bottom-0" : "-bottom-[800px]"
         } transition-all duration-[1000ms] absolute`}
       >
-        <img src={PhotoMyself} alt="" width={800}  />
+        <img src={PhotoMyself} alt="" width={WidthInfo() / 2.4}  />
       </div>
     </div>
   );
