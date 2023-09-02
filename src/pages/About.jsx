@@ -58,6 +58,8 @@ const About = () => {
         }, mySkillText: {
             fontSize: width / 40,
             top: width / 12
+        }, skillPosition: {
+            bottom: width / height * 1000 / 2
         }
     }
 
@@ -117,7 +119,7 @@ const About = () => {
             >
                 {<AboutBox addClass={'w-10/12'} />}
 
-                <div className="absolute bottom-1/4 md:bottom-1/3 w-full min-h-max flex justify-center items-center bg-red-100">
+                <div style={style.skillPosition} className="absolute w-full min-h-max flex justify-center items-center bg-red-100">
                     {<MainCircle 
                         style={style}
                     position={'absolute z-10'} onClick={() => {
@@ -126,8 +128,13 @@ const About = () => {
                         isStart={isStart}
                         child={(<h1 className={` ${isStart ? 'opacity-0' : 'opacity-100'} transition-all duration-700 text-xl font-medium text-zinc-500`}>My Skill</h1>)}
                     />}
-                    <img src={skillCirclePotrait} width={width / 1.5} className={`${isStart ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'} absolute  transition-all duration-700 `} alt="" />
+                    <img src={skillCirclePotrait} width={width / 1.8} className={`${isStart ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'} absolute  transition-all duration-700 `} alt="" />
                 </div>
+                <PageIndicators addClass={'-rotate-90 bottom-0 right-1/2'} screen={width > height}/>
+
+{/* <button className="-rotate-90 absolute bottom-12 right-1/4 text-white" onClick={() => navigate('/about')}>
+  <Arrow/>
+</button> */}
             </div>
 
         )
